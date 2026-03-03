@@ -1,2 +1,2 @@
-# phantomOS
-a modern game and proxy site made with google.
+#                                                                                                      phantomOS
+an os made for gaming at school.
