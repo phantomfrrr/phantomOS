@@ -47,17 +47,21 @@
 
             <!-- Games Grid -->
             <div id="game-grid" class="hidden">
-                <button class="back-btn" onclick="showHome()">← Back</button>
+                <div class="grid-header">
+                   <button class="back-btn" onclick="showHome()">← Back</button>
+                </div>
+                
                 <div class="grid-container">
-                    <!-- YOUR GAME LINKED HERE -->
+                    <!-- GAME 1: Alien Hominoid -->
                     <div class="game-card" onclick="launchGame('games/Alien Hominoid/index.html')">
                         <div class="game-icon">👽</div>
                         <p>Alien Hominoid</p>
                     </div>
-                    <!-- Example of an external game -->
-                    <div class="game-card" onclick="launchGame('https://gabrielecirulli.github.io')">
-                        <div class="game-icon">🔢</div>
-                        <p>2048</p>
+
+                    <!-- GAME 2: Attack Hole -->
+                    <div class="game-card" onclick="launchGame('games/Attack Hole/index.html')">
+                        <div class="game-icon">🕳️</div>
+                        <p>Attack Hole</p>
                     </div>
                 </div>
             </div>
