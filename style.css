@@ -1,25 +1,165 @@
-body, html { margin: 0; padding: 0; font-family: sans-serif; overflow: hidden; height: 100%; background: #f0f0f0; }
+/* --- 1. CORE SETUP --- */
+* { box-sizing: border-box; }
+body, html { 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    height: 100%; 
+    overflow: hidden; /* Stops scrolling during the OS mode */
+}
+
+/* The magic "Hide" class */
 .hidden { display: none !important; }
 
-/* Education Theme */
-#edu-layer { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.edu-btn { padding: 15px 30px; margin: 10px; font-size: 1.2rem; cursor: pointer; }
+/* --- 2. EDUCATION LAYER (The Mask) --- */
+#edu-layer { 
+    height: 100vh; 
+    background: #f4f7f6; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+}
+#edu-layer h1 { color: #2c3e50; margin-bottom: 30px; }
+.edu-btn { 
+    padding: 12px 25px; 
+    margin: 10px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    border: 1px solid #bdc3c7; 
+    background: white; 
+    border-radius: 5px; 
+    transition: 0.2s;
+}
+.edu-btn:hover { background: #ecf0f1; }
 
-/* Booting Screen */
-#boot-screen { height: 100vh; background: black; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99; position: fixed; width: 100%; top: 0; }
-.progress-container { width: 300px; height: 10px; background: #333; margin-top: 20px; border-radius: 5px; }
-#boot-progress { width: 0%; height: 100%; background: white; transition: width 0.1s; }
+/* --- 3. BOOT SCREEN (The 3-Second Transition) --- */
+#boot-screen { 
+    height: 100vh; 
+    background: black; 
+    color: white; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    z-index: 999;
+}
+.progress-container { 
+    width: 250px; 
+    height: 6px; 
+    background: #222; 
+    margin-top: 20px; 
+    border-radius: 10px; 
+    overflow: hidden;
+}
+#boot-progress { 
+    width: 0%; 
+    height: 100%; 
+    background: white; 
+    box-shadow: 0 0 10px white;
+}
 
-/* phantomOS Theme */
-#os-layer { height: 100vh; background: black; color: white; position: relative; }
-#particles { position: absolute; top: 0; left: 0; z-index: 0; pointer-events: none; }
-.os-header { display: flex; justify-content: space-between; padding: 20px; font-weight: bold; position: relative; z-index: 1; }
-.os-main { text-align: center; margin-top: 10vh; position: relative; z-index: 1; }
+/* --- 4. phantomOS LAYER (The Real Site) --- */
+#os-layer { 
+    height: 100vh; 
+    background: black; 
+    color: white; 
+    position: relative; 
+}
 
-.logo { font-size: 4rem; text-transform: lowercase; color: white; text-shadow: 0 0 10px white; }
-.purple-box { background: #8e44ad; color: white; padding: 0 10px; margin-left: 5px; border-radius: 4px; text-shadow: none; }
-.subtitle { color: #ccc; letter-spacing: 2px; }
+/* Floating Particles */
+#particles { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    z-index: 0; 
+}
 
-.box-container { display: flex; gap: 40px; justify-content: center; margin-top: 50px; }
-.box-container button { width: 250px; height: 150px; border: 2px solid white; background: transparent; color: white; font-size: 1.5rem; cursor: pointer; transition: 0.3s; box-shadow: 0 0 5px white; }
-.box-container button:hover { background: white; color: black; }
+/* OS Top Header */
+.os-header { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 15px 25px; 
+    font-weight: bold; 
+    position: relative; 
+    z-index: 2; 
+    font-family: monospace;
+}
+
+/* Main Logo & Boxes */
+.os-main { 
+    text-align: center; 
+    margin-top: 15vh; 
+    position: relative; 
+    z-index: 2; 
+}
+.logo { 
+    font-size: 4.5rem; 
+    text-transform: lowercase; 
+    letter-spacing: -2px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+.purple-box { 
+    background: #8e44ad; 
+    padding: 0 12px; 
+    margin-left: 8px; 
+    border-radius: 8px; 
+    text-shadow: none; 
+    box-shadow: 0 0 20px #8e44ad;
+}
+.subtitle { color: #888; letter-spacing: 4px; margin-top: -10px; }
+
+/* OS Buttons */
+.box-container { 
+    display: flex; 
+    gap: 30px; 
+    justify-content: center; 
+    margin-top: 60px; 
+}
+.box-container button { 
+    width: 220px; 
+    height: 140px; 
+    border: 1px solid white; 
+    background: rgba(255,255,255,0.05); 
+    color: white; 
+    font-size: 1.2rem; 
+    cursor: pointer; 
+    transition: 0.4s; 
+    box-shadow: 0 0 5px white;
+    backdrop-filter: blur(5px);
+}
+.box-container button:hover { 
+    background: white; 
+    color: black; 
+    box-shadow: 0 0 25px white;
+}
+
+/* --- 5. GAME GRID & FRAME --- */
+.grid-container { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+    gap: 20px; 
+    padding: 20px 10%;
+}
+.game-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.game-card:hover { transform: translateY(-5px); background: #8e44ad; }
+.back-btn { background: none; border: 1px solid white; color: white; cursor: pointer; margin-bottom: 20px; }
+
+#game-frame-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 1000;
+}
+#game-iframe { width: 100%; height: 100%; border: none; }
+.close-game {
+    position: absolute; top: 15px; right: 15px; padding: 8px 15px; 
+    background: #c0392b; color: white; border: none; cursor: pointer; border-radius: 5px;
+}
