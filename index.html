@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Resource Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Education Layer -->
+    <div id="edu-layer" class="active">
+        <header><h1>Academic Portal</h1></header>
+        <div class="content">
+            <button class="edu-btn">History</button>
+            <button class="edu-btn">Science</button>
+            <button id="math-trigger" class="edu-btn">Math</button>
+        </div>
+    </div>
+
+    <!-- Boot Screen -->
+    <div id="boot-screen" class="hidden">
+        <p>booting up phantomOS...</p>
+        <div class="progress-container">
+            <div id="boot-progress"></div>
+        </div>
+    </div>
+
+    <!-- phantomOS Layer -->
+    <div id="os-layer" class="hidden">
+        <canvas id="particles"></canvas>
+        <div class="os-header">
+            <div id="time">00:00</div>
+            <div id="battery">🔋 --%</div>
+        </div>
+        <div class="os-main">
+            <h1 class="logo">phantom<span class="purple-box">OS</span></h1>
+            <p class="subtitle">hello there!</p>
+            <div class="box-container">
+                <button onclick="alert('connecting to the simulations library...')">SIMULATIONS</button>
+                <button onclick="alert('connecting to apps library...')">APPS</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
