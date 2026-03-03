@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Education Layer -->
-    <div id="edu-layer" class="active">
+    <!-- 1. Education Layer (The Mask) -->
+    <div id="edu-layer">
         <header><h1>Academic Portal</h1></header>
         <div class="content">
             <button class="edu-btn">History</button>
@@ -17,28 +17,54 @@
         </div>
     </div>
 
-    <!-- Boot Screen -->
+    <!-- 2. Boot Screen (The 3-Second Transition) -->
     <div id="boot-screen" class="hidden">
-        <p>booting up phantomOS...</p>
+        <p>booting up <span style="color:#8e44ad; font-weight:bold;">phantomOS</span>...</p>
         <div class="progress-container">
             <div id="boot-progress"></div>
         </div>
     </div>
 
-    <!-- phantomOS Layer -->
+    <!-- 3. phantomOS Layer (The Real Site) -->
     <div id="os-layer" class="hidden">
         <canvas id="particles"></canvas>
+        
         <div class="os-header">
             <div id="time">00:00</div>
             <div id="battery">🔋 --%</div>
         </div>
+
         <div class="os-main">
-            <h1 class="logo">phantom<span class="purple-box">OS</span></h1>
-            <p class="subtitle">hello there!</p>
-            <div class="box-container">
-                <button onclick="alert('connecting to the simulations library...')">SIMULATIONS</button>
-                <button onclick="alert('connecting to apps library...')">APPS</button>
+            <!-- Home Screen -->
+            <div id="os-home">
+                <h1 class="logo">phantom<span class="purple-box">OS</span></h1>
+                <p class="subtitle">hello there!</p>
+                <div class="box-container">
+                    <button onclick="showCategory('simulations')">SIMULATIONS</button>
+                    <button onclick="showCategory('apps')">APPS</button>
+                </div>
             </div>
+
+            <!-- Games Grid (Hidden until Simulations is clicked) -->
+            <div id="game-grid" class="hidden">
+                <button class="back-btn" onclick="showHome()">← Back</button>
+                <div class="grid-container">
+                    <div class="game-card" onclick="launchGame('https://example.com/game1')">
+                        <div class="game-icon">🎮</div>
+                        <p>Slope</p>
+                    </div>
+                    <div class="game-card" onclick="launchGame('https://example.com/game2')">
+                        <div class="game-icon">🧱</div>
+                        <p>Tetris</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fullscreen Game Viewer -->
+        <div id="game-frame-container" class="hidden">
+            <button class="close-game" onclick="closeGame()">Exit Game</button>
+            <iframe id="game-iframe" src=""></iframe>
         </div>
     </div>
 
